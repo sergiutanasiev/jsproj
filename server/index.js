@@ -13,7 +13,9 @@ app.get('/', (req, res) => {
     return res.send('Recived a GET HTTP request method')
 })
 
-sequelize.sync()
+const eraseDatabaseOnSync = true
+
+sequelize.sync({force: eraseDatabaseOnSync})
     .then(
         app.listen(process.env.PORT=3000, () => {
             console.log(`Listening on ${process.env.PORT}`)
